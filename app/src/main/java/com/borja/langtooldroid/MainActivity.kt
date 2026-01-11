@@ -100,6 +100,10 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, RulesActivity::class.java))
         }
 
+        binding.btnAbout.setOnClickListener {
+            startActivity(Intent(this, AboutActivity::class.java))
+        }
+
         binding.btnClipboard.setOnClickListener {
             startActivity(Intent(this, ClipboardActivity::class.java))
         }

@@ -43,6 +43,11 @@
             android:exported="false" />
 
         <activity
+            android:name=".AboutActivity"
+            android:label="About"
+            android:exported="false" />
+
+        <activity
             android:name=".ClipboardActivity"
             android:label="Check Clipboard"
             android:theme="@style/Theme.LanguageToolDroid"
