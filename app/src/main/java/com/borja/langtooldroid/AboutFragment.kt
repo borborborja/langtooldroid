@@ -3,6 +3,7 @@ package com.borja.langtooldroid
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
+
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
@@ -12,6 +13,7 @@ import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import retrofit2.HttpException
 
 class AboutFragment : Fragment() {
 
@@ -54,7 +56,7 @@ class AboutFragment : Fragment() {
             binding.btnDebugCheck.isEnabled = false
             
             val prefs = androidx.preference.PreferenceManager.getDefaultSharedPreferences(requireContext())
-            val serverUrl = prefs.getString("server_url", getString(R.string.default_server)) ?: getString(R.string.default_server)
+            val serverUrl = (prefs.getString("server_url", getString(R.string.default_server)) ?: getString(R.string.default_server)).trim()
             // Use 'en' as fallback for debug if auto/system fails, but try to verify 'auto' logic if possible.
             // In Activity context, we don't have 'session locale', so we simulate 'auto' -> System Locale.
             var languageCode = prefs.getString("language_code", "auto") ?: "auto"
@@ -83,6 +85,14 @@ class AboutFragment : Fragment() {
                          sb.append("  Replacements: ${match.replacements.joinToString { it.value }}\n")
                      }
                      
+                } catch (e: HttpException) {
+                    sb.append("\nHTTP ERROR ${e.code()}: ${e.message()}\n")
+                    try {
+                        val errorBody = e.response()?.errorBody()?.string()
+                        sb.append("Body: $errorBody\n")
+                    } catch (e2: Exception) {
+                        sb.append("Could not read error body.\n")
+                    }
                 } catch (e: Exception) {
                     sb.append("\nERROR: ${e.message}\n")
                     e.printStackTrace()
