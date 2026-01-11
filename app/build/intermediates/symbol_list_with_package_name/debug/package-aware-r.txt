@@ -3278,6 +3278,7 @@ id bounceStart
 id btnAbout
 id btnApply
 id btnClipboard
+id btnDebugCheck
 id btnOpenSettings
 id btnOpenSettingsWarning
 id btnRules
@@ -3367,6 +3368,7 @@ id end
 id endToStart
 id enterAlways
 id enterAlwaysCollapsed
+id etDebugInput
 id etLanguage
 id etMotherTongue
 id etSearch
@@ -3691,6 +3693,7 @@ id transition_scene_layoutid_cache
 id transition_transform
 id triangle
 id tvCode
+id tvDebugOutput
 id tvName
 id tvNativeName
 id tvStatus

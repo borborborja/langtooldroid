@@ -8,6 +8,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.borja.langtooldroid.databinding.FragmentAboutBinding
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class AboutFragment : Fragment() {
 
@@ -35,6 +39,61 @@ class AboutFragment : Fragment() {
                 startActivity(Intent(android.provider.Settings.ACTION_SETTINGS))
             } catch (e: Exception) {
                 Toast.makeText(requireContext(), "Error opening settings", Toast.LENGTH_SHORT).show()
+            }
+        }
+        
+        binding.btnDebugCheck.setOnClickListener {
+            val text = binding.etDebugInput.text.toString()
+            if (text.isBlank()) {
+                Toast.makeText(requireContext(), "Enter text first", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            
+            binding.tvDebugOutput.visibility = View.VISIBLE
+            binding.tvDebugOutput.text = "Checking..."
+            binding.btnDebugCheck.isEnabled = false
+            
+            val prefs = androidx.preference.PreferenceManager.getDefaultSharedPreferences(requireContext())
+            val serverUrl = prefs.getString("server_url", getString(R.string.default_server)) ?: getString(R.string.default_server)
+            // Use 'en' as fallback for debug if auto/system fails, but try to verify 'auto' logic if possible.
+            // In Activity context, we don't have 'session locale', so we simulate 'auto' -> System Locale.
+            var languageCode = prefs.getString("language_code", "auto") ?: "auto"
+            if (languageCode == "auto") {
+                languageCode = java.util.Locale.getDefault().toLanguageTag()
+            }
+            
+            viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+                val sb = StringBuilder()
+                sb.append("Config:\n")
+                sb.append("Server: $serverUrl\n")
+                sb.append("Language: $languageCode\n")
+                
+                try {
+                     val params = HashMap<String, String>()
+                     params["text"] = text
+                     params["language"] = languageCode
+                     
+                     val response = LanguageToolClient.getApi(serverUrl).check(params)
+                     
+                     sb.append("\nAPI Success!\n")
+                     sb.append("Matches: ${response.matches.size}\n")
+                     response.matches.forEach { match ->
+                         sb.append("- ${match.message}\n")
+                         sb.append("  Rule: ${match.rule.id}\n")
+                         sb.append("  Replacements: ${match.replacements.joinToString { it.value }}\n")
+                     }
+                     
+                } catch (e: Exception) {
+                    sb.append("\nERROR: ${e.message}\n")
+                    e.printStackTrace()
+                }
+                
+                withContext(Dispatchers.Main) {
+                    if (_binding != null) {
+                         binding.tvDebugOutput.text = sb.toString()
+                         binding.btnDebugCheck.isEnabled = true
+                    }
+                }
             }
         }
     }

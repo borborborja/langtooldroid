@@ -5,12 +5,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.widget.NestedScrollView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.borja.langtooldroid.R;
+import com.google.android.material.textfield.TextInputEditText;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -23,13 +25,26 @@ public final class FragmentAboutBinding implements ViewBinding {
   public final Button btnAbout;
 
   @NonNull
+  public final Button btnDebugCheck;
+
+  @NonNull
   public final Button btnOpenSettings;
 
+  @NonNull
+  public final TextInputEditText etDebugInput;
+
+  @NonNull
+  public final TextView tvDebugOutput;
+
   private FragmentAboutBinding(@NonNull NestedScrollView rootView, @NonNull Button btnAbout,
-      @NonNull Button btnOpenSettings) {
+      @NonNull Button btnDebugCheck, @NonNull Button btnOpenSettings,
+      @NonNull TextInputEditText etDebugInput, @NonNull TextView tvDebugOutput) {
     this.rootView = rootView;
     this.btnAbout = btnAbout;
+    this.btnDebugCheck = btnDebugCheck;
     this.btnOpenSettings = btnOpenSettings;
+    this.etDebugInput = etDebugInput;
+    this.tvDebugOutput = tvDebugOutput;
   }
 
   @Override
@@ -65,13 +80,32 @@ public final class FragmentAboutBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.btnDebugCheck;
+      Button btnDebugCheck = ViewBindings.findChildViewById(rootView, id);
+      if (btnDebugCheck == null) {
+        break missingId;
+      }
+
       id = R.id.btnOpenSettings;
       Button btnOpenSettings = ViewBindings.findChildViewById(rootView, id);
       if (btnOpenSettings == null) {
         break missingId;
       }
 
-      return new FragmentAboutBinding((NestedScrollView) rootView, btnAbout, btnOpenSettings);
+      id = R.id.etDebugInput;
+      TextInputEditText etDebugInput = ViewBindings.findChildViewById(rootView, id);
+      if (etDebugInput == null) {
+        break missingId;
+      }
+
+      id = R.id.tvDebugOutput;
+      TextView tvDebugOutput = ViewBindings.findChildViewById(rootView, id);
+      if (tvDebugOutput == null) {
+        break missingId;
+      }
+
+      return new FragmentAboutBinding((NestedScrollView) rootView, btnAbout, btnDebugCheck,
+          btnOpenSettings, etDebugInput, tvDebugOutput);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

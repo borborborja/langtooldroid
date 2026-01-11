@@ -24,6 +24,7 @@ drawable ic_launcher_foreground
 id btnAbout
 id btnApply
 id btnClipboard
+id btnDebugCheck
 id btnOpenSettings
 id btnOpenSettingsWarning
 id btnRules
@@ -33,6 +34,7 @@ id btn_download_update
 id cardSetupWarning
 id cbSelected
 id coordinator
+id etDebugInput
 id etLanguage
 id etMotherTongue
 id etSearch
@@ -51,6 +53,7 @@ id tabLayout
 id tfSearch
 id tfServerUrl
 id tvCode
+id tvDebugOutput
 id tvName
 id tvNativeName
 id tvStatus

@@ -105,6 +105,61 @@
                     android:text="View Full Licensing" />
 
             </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="@color/card_bg">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Debug &amp; Diagnostics"
+                    android:textAppearance="?attr/textAppearanceTitleMedium"
+                    android:layout_marginBottom="8dp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etDebugInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Type text to test..." />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/btnDebugCheck"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Check Text (Debug)" />
+
+                <TextView
+                    android:id="@+id/tvDebugOutput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="#E0E0E0"
+                    android:padding="8dp"
+                    android:fontFamily="monospace"
+                    android:textSize="10sp"
+                    android:visibility="gone"
+                    android:text="Output will appear here..." />
+
+            </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>
