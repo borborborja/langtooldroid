@@ -79,8 +79,8 @@ class SpellCheckerService : SpellCheckerService() {
                             params["text"] = sentence
                             params["language"] = language
                             params["level"] = level
-                            params["motherTongue"] = motherTongue
-                            params["disabledCategories"] = disabledCats
+                            if (motherTongue.isNotEmpty()) params["motherTongue"] = motherTongue
+                            if (disabledCats.isNotEmpty()) params["disabledCategories"] = disabledCats
                             // Add other options if implemented in preferences later
                             
                             LanguageToolClient.getApi(serverUrl).check(params)

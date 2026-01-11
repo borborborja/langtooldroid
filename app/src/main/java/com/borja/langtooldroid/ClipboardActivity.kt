@@ -53,8 +53,8 @@ class ClipboardActivity : AppCompatActivity() {
                 params["text"] = text
                 params["language"] = language
                 params["level"] = level
-                params["motherTongue"] = motherTongue
-                params["disabledCategories"] = disabledCats
+                if (motherTongue.isNotEmpty()) params["motherTongue"] = motherTongue
+                if (disabledCats.isNotEmpty()) params["disabledCategories"] = disabledCats
                 
                 val response = LanguageToolClient.getApi(serverUrl).check(params)
 
