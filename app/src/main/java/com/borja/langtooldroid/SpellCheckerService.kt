@@ -22,8 +22,26 @@ class SpellCheckerService : SpellCheckerService() {
         }
 
         override fun onGetSuggestions(textInfo: TextInfo?, suggestionsLimit: Int): SuggestionsInfo {
-            // Deprecated, but some apps might still call it.
-            // We can delegate or return empty.
+            if (textInfo == null || textInfo.text.isNullOrBlank()) {
+                return SuggestionsInfo(SuggestionsInfo.RESULT_ATTR_IN_THE_DICTIONARY, emptyArray())
+            }
+
+            // Reuse the shared logic to get matches
+            val matches = checkTextWithApi(textInfo.text)
+            
+            // If matches found, construct SuggestionsInfo
+            if (matches.isNotEmpty()) {
+                // For onGetSuggestions (single word usually), we map the first match that covers the word
+                // Or simply return the suggestions from the first relevant match.
+                // Usually onGetSuggestions is for a single word.
+                val match = matches.firstOrNull() // Simplified strategy
+                if (match != null) {
+                    val attributes = SuggestionsInfo.RESULT_ATTR_LOOKS_LIKE_TYPO
+                    val replacements = match.replacements.take(suggestionsLimit).map { it.value }.toTypedArray()
+                    return SuggestionsInfo(attributes, replacements)
+                }
+            }
+
             return SuggestionsInfo(SuggestionsInfo.RESULT_ATTR_IN_THE_DICTIONARY, emptyArray())
         }
 
@@ -35,13 +53,6 @@ class SpellCheckerService : SpellCheckerService() {
             
             if (textInfos == null) return result.toTypedArray()
 
-            val prefs = PreferenceManager.getDefaultSharedPreferences(applicationContext)
-            val serverUrl = prefs.getString("server_url", getString(R.string.default_server)) ?: getString(R.string.default_server)
-            // Use saved language or default to auto (e.g., "en-US" or "auto")
-            val languageCodeRaw = prefs.getString("language_code", "auto") ?: "auto"
-            // If multiple languages are selected (comma separated), fallback to "auto"
-            val language = if (languageCodeRaw.contains(",")) "auto" else languageCodeRaw
-
             for (textInfo in textInfos) {
                 val sentence = textInfo.text
                 if (sentence.isNullOrBlank()) {
@@ -50,54 +61,13 @@ class SpellCheckerService : SpellCheckerService() {
                 }
 
                 try {
-                    // 1. Wifi Only Check
-                    val wifiOnly = prefs.getBoolean("wifi_only", false)
-                    if (wifiOnly) {
-                        val connManager = getSystemService(android.content.Context.CONNECTIVITY_SERVICE) as android.net.ConnectivityManager
-                        val activeNetwork = connManager.activeNetwork
-                        val capabilities = connManager.getNetworkCapabilities(activeNetwork)
-                        val isWifi = capabilities?.hasTransport(android.net.NetworkCapabilities.TRANSPORT_WIFI) == true
-                        if (!isWifi) {
-                             // Skip check if wifi only requested and not on wifi
-                             result.add(createEmptySentenceSuggestionsInfo())
-                             continue
-                        }
-                    }
-
-                    // 2. User Dictionary Check is complex to do efficiently here without iterating all words.
-                    // Instead, we will filter the RESULTS from the API. if a "typo" match exists in UserDictionary, ignore it.
-                    
-                    val disabledCats = prefs.getString("disabled_categories", "") ?: ""
-                    val pickyMode = prefs.getBoolean("picky_mode", false)
-                    val motherTongue = prefs.getString("mother_tongue", "") ?: ""
-                    val level = if (pickyMode) "picky" else "default"
-
-                    // Synchronous blocking call is required here as the API is synchronous
-                    // Ideally we should keep this fast.
-                    val checkResponse = runBlocking {
-                            val params = HashMap<String, String>()
-                            params["text"] = sentence
-                            params["language"] = language
-                            params["level"] = level
-                            if (motherTongue.isNotEmpty()) params["motherTongue"] = motherTongue
-                            if (disabledCats.isNotEmpty()) params["disabledCategories"] = disabledCats
-                            // Add other options if implemented in preferences later
-                            
-                            LanguageToolClient.getApi(serverUrl).check(params)
-                    }
+                    val matches = checkTextWithApi(sentence)
 
                     val suggestionsInfos = ArrayList<SuggestionsInfo>()
                     val offsets = ArrayList<Int>()
                     val lengths = ArrayList<Int>()
 
-                    for (match in checkResponse.matches) {
-                         // Check User Dictionary
-                         // We are looking for text covered by match.offset and match.length
-                         val errorText = sentence.substring(match.offset, match.offset + match.length)
-                         if (isWordInUserDictionary(errorText)) {
-                             continue
-                         }
-
+                    for (match in matches) {
                          val replacements = match.replacements.take(suggestionsLimit).map { it.value }.toTypedArray()
                          
                          // Attributes
@@ -105,8 +75,6 @@ class SpellCheckerService : SpellCheckerService() {
                          if (match.rule.issueType == "misspelling") {
                              attributes = SuggestionsInfo.RESULT_ATTR_LOOKS_LIKE_TYPO
                          } else {
-                             // Use RESULT_ATTR_LOOKS_LIKE_GRAMMAR_ERROR (Value 8, added in API 31)
-                             // We use the constant if available or raw value 8.
                              // 0x0008 is RESULT_ATTR_LOOKS_LIKE_GRAMMAR_ERROR
                              attributes = 0x0008 
                          }
@@ -129,12 +97,58 @@ class SpellCheckerService : SpellCheckerService() {
 
                 } catch (e: Exception) {
                     Log.e("LTDroid", "Error checking text: ${e.message}")
-                    // On error, return empty to avoid crashing the client app
                     result.add(createEmptySentenceSuggestionsInfo())
                 }
             }
 
             return result.toTypedArray()
+        }
+        
+        private fun checkTextWithApi(text: String): List<Match> {
+             val prefs = PreferenceManager.getDefaultSharedPreferences(applicationContext)
+             val serverUrl = prefs.getString("server_url", getString(R.string.default_server)) ?: getString(R.string.default_server)
+             val languageCodeRaw = prefs.getString("language_code", "auto") ?: "auto"
+             val language = if (languageCodeRaw.contains(",")) "auto" else languageCodeRaw
+             
+             // 1. Wifi Only Check
+             val wifiOnly = prefs.getBoolean("wifi_only", false)
+             if (wifiOnly) {
+                 val connManager = getSystemService(android.content.Context.CONNECTIVITY_SERVICE) as android.net.ConnectivityManager
+                 val activeNetwork = connManager.activeNetwork
+                 val capabilities = connManager.getNetworkCapabilities(activeNetwork)
+                 val isWifi = capabilities?.hasTransport(android.net.NetworkCapabilities.TRANSPORT_WIFI) == true
+                 if (!isWifi) {
+                     return emptyList()
+                 }
+             }
+
+             val disabledCats = prefs.getString("disabled_categories", "") ?: ""
+             val pickyMode = prefs.getBoolean("picky_mode", false)
+             val motherTongue = prefs.getString("mother_tongue", "") ?: ""
+             val level = if (pickyMode) "picky" else "default"
+
+             // Blocking call
+             return runBlocking {
+                 try {
+                     val params = HashMap<String, String>()
+                     params["text"] = text
+                     params["language"] = language
+                     params["level"] = level
+                     if (motherTongue.isNotEmpty()) params["motherTongue"] = motherTongue
+                     if (disabledCats.isNotEmpty()) params["disabledCategories"] = disabledCats
+                     
+                     val response = LanguageToolClient.getApi(serverUrl).check(params)
+                     
+                     // Filter User Dictionary
+                     response.matches.filter { match ->
+                         val errorText = text.substring(match.offset, match.offset + match.length)
+                         !isWordInUserDictionary(errorText)
+                     }
+                 } catch (e: Exception) {
+                     Log.e("LTDroid", "API Call failed: ${e.message}")
+                     emptyList()
+                 }
+             }
         }
         
         private fun createEmptySentenceSuggestionsInfo(): SentenceSuggestionsInfo {
