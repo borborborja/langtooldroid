@@ -59,7 +59,9 @@ class AboutFragment : Fragment() {
             val serverUrl = (prefs.getString("server_url", getString(R.string.default_server)) ?: getString(R.string.default_server)).trim()
             // Use 'en' as fallback for debug if auto/system fails, but try to verify 'auto' logic if possible.
             // In Activity context, we don't have 'session locale', so we simulate 'auto' -> System Locale.
-            var languageCode = prefs.getString("language_code", "auto") ?: "auto"
+            var languageCodeRaw = prefs.getString("language_code", "auto") ?: "auto"
+            var languageCode = if (languageCodeRaw.contains(",")) "auto" else languageCodeRaw
+            
             if (languageCode == "auto") {
                 languageCode = java.util.Locale.getDefault().toLanguageTag()
             }

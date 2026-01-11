@@ -42,7 +42,7 @@ class SettingsFragment : Fragment() {
         // Language Selector Logic
         binding.etLanguage.setOnClickListener {
             val dialog = LanguageSelectionDialog()
-            dialog.initiallySelectedCodes = binding.etLanguage.text.toString().split(",")
+            dialog.initiallySelectedCodes = binding.etLanguage.text.toString().split(",").map { it.trim() }
             dialog.onLanguagesSelected = { codes ->
                 binding.etLanguage.setText(codes.joinToString(","))
             }
