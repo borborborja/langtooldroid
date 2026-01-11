@@ -126,6 +126,10 @@ class SpellCheckerService : SpellCheckerService() {
             return result.toTypedArray()
         }
         
+        private fun createEmptySentenceSuggestionsInfo(): SentenceSuggestionsInfo {
+            return SentenceSuggestionsInfo(emptyArray(), intArrayOf(), intArrayOf())
+        }
+
         private fun isWordInUserDictionary(word: String): Boolean {
             val cursor = contentResolver.query(
                 android.provider.UserDictionary.Words.CONTENT_URI,
