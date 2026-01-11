@@ -147,6 +147,13 @@
                     android:layout_height="wrap_content"
                     android:text="Check Text (Debug)" />
 
+                <Button
+                    android:id="@+id/btnViewLogs"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="View Service Logs" />
+
                 <TextView
                     android:id="@+id/tvDebugOutput"
                     android:layout_width="match_parent"

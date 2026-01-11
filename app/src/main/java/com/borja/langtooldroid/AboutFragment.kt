@@ -13,12 +13,7 @@ import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import kotlinx.coroutines.withContext
 import retrofit2.HttpException
-import android.text.Spannable
-import android.text.style.BackgroundColorSpan
-import android.text.style.ForegroundColorSpan
-import android.graphics.Color
 
 class AboutFragment : Fragment() {
 
@@ -77,16 +72,12 @@ class AboutFragment : Fragment() {
                 sb.append("Server: $serverUrl\n")
                 sb.append("Language: $languageCode\n")
                 
-                // Variable to hold matches for UI thread
-                var matchesResult: List<com.borja.langtooldroid.Match>? = null
-                
                 try {
                      val params = HashMap<String, String>()
                      params["text"] = text
                      params["language"] = languageCode
                      
                      val response = LanguageToolClient.getApi(serverUrl).check(params)
-                     matchesResult = response.matches // Save for UI
                      
                      sb.append("\nAPI Success!\n")
                      sb.append("Matches: ${response.matches.size}\n")
@@ -113,29 +104,18 @@ class AboutFragment : Fragment() {
                     if (_binding != null) {
                          binding.tvDebugOutput.text = sb.toString()
                          binding.btnDebugCheck.isEnabled = true
-                         
-                         // Visual Highlighting on the Input Text
-                         val editable = binding.etDebugInput.text
-                         if (editable != null) {
-                             // Clear previous spans
-                             val spans = editable.getSpans(0, editable.length, BackgroundColorSpan::class.java)
-                             for (span in spans) { editable.removeSpan(span) }
-                             
-                             // Apply new spans
-                             val matches = matchesResult
-                             if (matches != null) { 
-                                 for (match in matches) {
-                                     val start = match.offset
-                                     val end = start + match.length
-                                     if (start >= 0 && end <= editable.length) {
-                                         // Use semi-transparent red for errors
-                                         editable.setSpan(BackgroundColorSpan(Color.parseColor("#33FF0000")), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-                                     }
-                                 }
-                             }
-                         }
                     }
                 }
+            }
+        }
+        
+        binding.btnViewLogs.setOnClickListener {
+            binding.tvDebugOutput.visibility = View.VISIBLE
+            val logs = SpellCheckerService.serviceLogs
+            if (logs.isEmpty()) {
+                binding.tvDebugOutput.text = "No logs found. \n(Service might not be active/bound yet)"
+            } else {
+                binding.tvDebugOutput.text = logs.joinToString("\n")
             }
         }
     }

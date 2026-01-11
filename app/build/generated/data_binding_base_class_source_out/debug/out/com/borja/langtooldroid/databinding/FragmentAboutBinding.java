@@ -31,18 +31,22 @@ public final class FragmentAboutBinding implements ViewBinding {
   public final Button btnOpenSettings;
 
   @NonNull
+  public final Button btnViewLogs;
+
+  @NonNull
   public final TextInputEditText etDebugInput;
 
   @NonNull
   public final TextView tvDebugOutput;
 
   private FragmentAboutBinding(@NonNull NestedScrollView rootView, @NonNull Button btnAbout,
-      @NonNull Button btnDebugCheck, @NonNull Button btnOpenSettings,
+      @NonNull Button btnDebugCheck, @NonNull Button btnOpenSettings, @NonNull Button btnViewLogs,
       @NonNull TextInputEditText etDebugInput, @NonNull TextView tvDebugOutput) {
     this.rootView = rootView;
     this.btnAbout = btnAbout;
     this.btnDebugCheck = btnDebugCheck;
     this.btnOpenSettings = btnOpenSettings;
+    this.btnViewLogs = btnViewLogs;
     this.etDebugInput = etDebugInput;
     this.tvDebugOutput = tvDebugOutput;
   }
@@ -92,6 +96,12 @@ public final class FragmentAboutBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.btnViewLogs;
+      Button btnViewLogs = ViewBindings.findChildViewById(rootView, id);
+      if (btnViewLogs == null) {
+        break missingId;
+      }
+
       id = R.id.etDebugInput;
       TextInputEditText etDebugInput = ViewBindings.findChildViewById(rootView, id);
       if (etDebugInput == null) {
@@ -105,7 +115,7 @@ public final class FragmentAboutBinding implements ViewBinding {
       }
 
       return new FragmentAboutBinding((NestedScrollView) rootView, btnAbout, btnDebugCheck,
-          btnOpenSettings, etDebugInput, tvDebugOutput);
+          btnOpenSettings, btnViewLogs, etDebugInput, tvDebugOutput);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

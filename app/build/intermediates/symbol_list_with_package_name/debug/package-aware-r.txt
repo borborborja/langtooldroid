@@ -3283,6 +3283,7 @@ id btnOpenSettings
 id btnOpenSettingsWarning
 id btnRules
 id btnSave
+id btnViewLogs
 id btn_check_update
 id btn_download_update
 id buttonPanel

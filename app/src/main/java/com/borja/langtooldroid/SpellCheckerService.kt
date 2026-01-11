@@ -8,8 +8,22 @@ import android.view.textservice.TextInfo
 import androidx.preference.PreferenceManager
 import kotlinx.coroutines.runBlocking
 import java.util.Locale
+import java.util.concurrent.CopyOnWriteArrayList
 
 class SpellCheckerService : SpellCheckerService() {
+
+    companion object {
+        val serviceLogs = CopyOnWriteArrayList<String>()
+        private const val MAX_LOGS = 50
+        
+        fun log(msg: String) {
+            if (serviceLogs.size >= MAX_LOGS) {
+                serviceLogs.removeAt(0)
+            }
+            serviceLogs.add("${System.currentTimeMillis()}: $msg")
+            Log.d("LTDroidService", msg)
+        }
+    }
 
     override fun createSession(): Session {
         return LanguageToolSession()
@@ -27,6 +41,7 @@ class SpellCheckerService : SpellCheckerService() {
             }
 
             // Reuse the shared logic to get matches
+            log("onGetSuggestions: ${textInfo.text}")
             val matches = checkTextWithApi(textInfo.text)
             
             // If matches found, construct SuggestionsInfo
@@ -61,7 +76,9 @@ class SpellCheckerService : SpellCheckerService() {
                 }
 
                 try {
+                    log("SentenceCheck: $sentence")
                     val matches = checkTextWithApi(sentence)
+                    log("Matches found: ${matches.size}")
 
                     val suggestionsInfos = ArrayList<SuggestionsInfo>()
                     val offsets = ArrayList<Int>()
@@ -70,14 +87,15 @@ class SpellCheckerService : SpellCheckerService() {
                     for (match in matches) {
                          val replacements = match.replacements.take(suggestionsLimit).map { it.value }.toTypedArray()
                          
-                         // Attributes
-                         var attributes = 0
-                         if (match.rule.issueType == "misspelling") {
-                             attributes = SuggestionsInfo.RESULT_ATTR_LOOKS_LIKE_TYPO
-                         } else {
-                             // 0x0008 is RESULT_ATTR_LOOKS_LIKE_GRAMMAR_ERROR
-                             attributes = 0x0008 
-                         }
+                          // Attributes
+                          var attributes = 0
+                          if (match.rule.issueType == "misspelling") {
+                              attributes = SuggestionsInfo.RESULT_ATTR_LOOKS_LIKE_TYPO
+                          } else {
+                              // Flag all as TYPO for now to ensure visibility on Android.
+                              // 0x0008 (Grammar) is not always supported.
+                              attributes = SuggestionsInfo.RESULT_ATTR_LOOKS_LIKE_TYPO 
+                          }
                          
                          suggestionsInfos.add(SuggestionsInfo(attributes, replacements))
                          
