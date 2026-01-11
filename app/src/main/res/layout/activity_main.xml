@@ -122,7 +122,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="Save & Test Connection"
+                android:text="Save &amp; Test Connection"
                 android:padding="12dp"
                 app:cornerRadius="8dp"/>
 
