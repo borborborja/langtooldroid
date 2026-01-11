@@ -19,5 +19,7 @@
     <string name="card_actions">Acciones</string>
     <string name="new_version_title">Nueva Versión Disponible</string>
     <string name="new_version_message">La versión %s está disponible.</string>
+    <string name="new_version_message">La versión %s está disponible.</string>
     <string name="btn_download">Descargar</string>
+    <string name="subtype_generic">LanguageTool</string>
 </resources>

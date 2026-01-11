@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.borja.langtooldroid.app-mergeReleaseResources-38:/values-zh/values-zh.xml",
+            "map": [
+                {
+                    "source": "/home/borja/Codi/langtooldroid/app/src/main/res/values-zh/strings.xml",
+                    "from": {
+                        "startLines": "1,7,6,9,8,11,10,5,3,4,2",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "16,376,323,490,437,622,544,274,136,192,72",
+                        "endColumns": "55,60,52,53,52,71,77,48,55,81,63",
+                        "endOffsets": "67,432,371,539,485,689,617,318,187,269,131"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,111,172,225,279,332,404,482,531,587,669",
+                        "endColumns": "55,60,52,53,52,71,77,48,55,81,63",
+                        "endOffsets": "106,167,220,274,327,399,477,526,582,664,728"
+                    }
+                }
+            ]
+        }
+    ]
+}

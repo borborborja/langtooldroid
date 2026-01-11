@@ -1,0 +1,19 @@
+<lint-module
+    format="1"
+    dir="/home/borja/Codi/langtooldroid/app"
+    name=":app"
+    type="APP"
+    maven="LanguageToolDroid:app:"
+    agpVersion="8.2.0"
+    buildFolder="build"
+    bootClassPath="/home/borja/android-sdk/platforms/android-35/android.jar:/home/borja/android-sdk/build-tools/34.0.0/core-lambda-stubs.jar"
+    javaSourceLevel="1.8"
+    compileTarget="android-35"
+    neverShrinking="true">
+  <lintOptions
+      abortOnError="true"
+      absolutePaths="true"
+      checkReleaseBuilds="true"
+      explainIssues="true"/>
+  <variant name="release"/>
+</lint-module>

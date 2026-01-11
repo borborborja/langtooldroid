@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LanguageTool Droid</string>
+    <string name="btn_open_spell_settings">Abrir Configurações de Ortografia</string>
+    <string name="btn_test_connection">Testar Conexão</string>
+    <string name="connection_failed">Falha na Conexão: %s</string>
+    <string name="connection_success">Conexão Bem-sucedida!</string>
+    <string name="default_server">https://api.languagetool.org</string>
+    <string name="hint_enable_service">Por favor, ative o LanguageTool Droid nas configurações do sistema.</string>
+    <string name="settings_language">Idioma</string>
+    <string name="settings_server_url">URL do Servidor</string>
+    <string name="settings_server_url_hint">https://api.languagetool.org</string>
+    <string name="title_activity_main">Configurações do LanguageTool</string>
+</resources>

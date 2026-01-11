@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    tools:context=".RulesActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Enabled Categories"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="16dp"/>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/sw_casing"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Casing (Capitalization)"
+                        android:checked="true"
+                        android:padding="12dp"/>
+                    
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/sw_typo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Typography"
+                        android:checked="true"
+                        android:padding="12dp"/>
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/sw_style"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Style"
+                        android:checked="true"
+                        android:padding="12dp"/>
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/sw_redundancy"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Redundancy"
+                        android:checked="true"
+                        android:padding="12dp"/>
+                    
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/sw_semantics"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Semantics"
+                        android:checked="true"
+                        android:padding="12dp"/>
+
+                     <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/sw_grammar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Grammar"
+                        android:checked="true"
+                        android:padding="12dp"/>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Disable these categories to reduce 'noise' if you find them annoying."
+                android:textSize="12sp"
+                android:layout_marginTop="8dp"
+                android:alpha="0.7"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
