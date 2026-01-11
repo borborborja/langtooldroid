@@ -11,8 +11,8 @@ android {
         applicationId = "com.borja.langtooldroid"
         minSdk = 26
         targetSdk = 35
-        versionCode = 4
-        versionName = "0.1.2"
+        versionCode = 5
+        versionName = "0.1.3"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }

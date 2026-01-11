@@ -20,6 +20,7 @@ color warning_text
 color white
 drawable gradient_background
 drawable ic_arrow_drop_down_24
+drawable ic_launcher_foreground
 id btnAbout
 id btnApply
 id btnClipboard
