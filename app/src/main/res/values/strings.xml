@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">LanguageTool Droid</string>
+    <string name="title_activity_main">LanguageTool Settings</string>
+    <string name="settings_server_url">Server URL</string>
+    <string name="settings_server_url_hint">https://api.languagetool.org</string>
+    <string name="settings_language">Language</string>
+    <string name="btn_test_connection">Test Connection</string>
+    <string name="btn_open_spell_settings">Open Spell Checker Settings</string>
+    <string name="connection_success">Connection Successful!</string>
+    <string name="connection_failed">Connection Failed: %s</string>
+    <string name="hint_enable_service">Please enable LanguageTool Droid in system settings.</string>
+    <string name="default_server">https://api.languagetool.org</string>
+</resources>

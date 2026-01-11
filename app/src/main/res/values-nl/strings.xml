@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">LanguageTool Droid</string>
+    <string name="title_activity_main">LanguageTool Instellingen</string>
+    <string name="settings_server_url">Server-URL</string>
+    <string name="settings_server_url_hint">https://api.languagetool.org</string>
+    <string name="settings_language">Taal</string>
+    <string name="btn_test_connection">Verbinding testen</string>
+    <string name="btn_open_spell_settings">Spellinginstellingen openen</string>
+    <string name="connection_success">Verbinding geslaagd!</string>
+    <string name="connection_failed">Verbinding mislukt: %s</string>
+    <string name="hint_enable_service">Schakel LanguageTool Droid in via de systeeminstellingen.</string>
+    <string name="default_server">https://api.languagetool.org</string>
+</resources>

@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">LanguageTool Droid</string>
+    <string name="title_activity_main">LanguageTool 설정</string>
+    <string name="settings_server_url">서버 URL</string>
+    <string name="settings_server_url_hint">https://api.languagetool.org</string>
+    <string name="settings_language">언어</string>
+    <string name="btn_test_connection">연결 테스트</string>
+    <string name="btn_open_spell_settings">맞춤법 검사 설정 열기</string>
+    <string name="connection_success">연결 성공!</string>
+    <string name="connection_failed">연결 실패: %s</string>
+    <string name="hint_enable_service">시스템 설정에서 LanguageTool Droid를 활성화해주세요.</string>
+    <string name="default_server">https://api.languagetool.org</string>
+</resources>
