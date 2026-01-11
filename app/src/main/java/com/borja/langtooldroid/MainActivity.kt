@@ -135,7 +135,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnOpenSettings.setOnClickListener {
             try {
-                val intent = Intent(Settings.ACTION_SPELL_CHECKER_SETTINGS)
+                val intent = Intent("android.settings.SPELL_CHECKER_SETTINGS")
                 startActivity(intent)
             } catch (e: Exception) {
                 Toast.makeText(this, "Could not open settings directly", Toast.LENGTH_SHORT).show()
