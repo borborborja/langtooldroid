@@ -10,4 +10,14 @@
     <string name="connection_failed">Connection Failed: %s</string>
     <string name="hint_enable_service">Please enable LanguageTool Droid in system settings.</string>
     <string name="default_server">https://api.languagetool.org</string>
+    <string name="connection_testing">Testing connection...</string>
+    <string name="setup_warning_title">Setup Required</string>
+    <string name="setup_warning_description">You must enable LanguageTool Droid in your system\'s Spell Checker settings to use this app.</string>
+    <string name="btn_open_settings">Open Settings</string>
+    <string name="card_server_settings">Server Configuration</string>
+    <string name="card_language_settings">Language &amp; Rules</string>
+    <string name="card_actions">Actions</string>
+    <string name="new_version_title">New Version Available</string>
+    <string name="new_version_message">Version %s is available.</string>
+    <string name="btn_download">Download</string>
 </resources>

@@ -43,11 +43,7 @@ class MainActivity : AppCompatActivity() {
             builder.setTitle(getString(R.string.settings_language))
             builder.setMultiChoiceItems(languages, selectedLanguages) { dialog, which, isChecked ->
                 selectedLanguages[which] = isChecked
-                
-                // Logic: If 'auto' is checked, uncheck others? Or handle in save?
-                // Let's keep it simple: if 'auto' is selected, it takes precedence eventually.
                 if (languages[which] == "auto" && isChecked) {
-                     // Optionally uncheck others for UI clarity
                      for (i in languages.indices) {
                          if (i != which) {
                              selectedLanguages[i] = false
@@ -55,7 +51,6 @@ class MainActivity : AppCompatActivity() {
                          }
                      }
                 } else if (isChecked) {
-                     // If specific language check, uncheck 'auto'
                       val autoIndex = languages.indexOf("auto")
                       if (autoIndex != -1 && selectedLanguages[autoIndex]) {
                           selectedLanguages[autoIndex] = false
@@ -127,25 +122,43 @@ class MainActivity : AppCompatActivity() {
                 .putBoolean("wifi_only", binding.swWifiOnly.isChecked)
                 .apply()
 
-            // If multiple languages -> test with 'auto' or just the first one?
-            // For testing connection, we use the first valid code or auto
             val testLang = if (language.contains(",")) "auto" else language
             testConnection(url, testLang)
         }
 
-        binding.btnOpenSettings.setOnClickListener {
-            try {
-                val intent = Intent("android.settings.SPELL_CHECKER_SETTINGS")
-                startActivity(intent)
-            } catch (e: Exception) {
-                Toast.makeText(this, "Could not open settings directly", Toast.LENGTH_SHORT).show()
-            }
+        binding.btnOpenSettings.setOnClickListener { openSpellCheckerSettings() }
+        binding.btnOpenSettingsWarning.setOnClickListener { openSpellCheckerSettings() }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        checkSpellCheckerServiceStatus()
+    }
+
+    private fun openSpellCheckerSettings() {
+        try {
+            val intent = Intent("android.settings.SPELL_CHECKER_SETTINGS")
+            startActivity(intent)
+        } catch (e: Exception) {
+            Toast.makeText(this, "Could not open settings directly", Toast.LENGTH_SHORT).show()
         }
     }
 
+    private fun checkSpellCheckerServiceStatus() {
+        // It's hard to know exactly if WE are the selected one without inspecting secure settings (which needs permission).
+        // However, we can at least guide the user.
+        // For now, always show the warning if this is a fresh install or just show it until user explicitly dismisses it?
+        // Better: Just show the card. The text says "You must enable...". 
+        // If we want to be smarter, uses TextServicesManager but public API is limited.
+        // Let's rely on visibility. 
+        binding.cardSetupWarning.visibility = android.view.View.VISIBLE
+    }
+
     private fun testConnection(url: String, language: String) {
-        binding.tvStatus.text = "Testing connection..."
+        binding.tvStatus.text = getString(R.string.connection_testing)
+        binding.tvStatus.setTextColor(getColor(R.color.md_theme_light_primary))
         binding.btnSave.isEnabled = false
+        binding.pbLoading.visibility = android.view.View.VISIBLE
 
         CoroutineScope(Dispatchers.IO).launch {
             try {
@@ -157,12 +170,14 @@ class MainActivity : AppCompatActivity() {
                     binding.tvStatus.setTextColor(getColor(R.color.md_theme_light_primary))
                     Toast.makeText(this@MainActivity, "Saved!", Toast.LENGTH_SHORT).show()
                     binding.btnSave.isEnabled = true
+                    binding.pbLoading.visibility = android.view.View.GONE
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
                     binding.tvStatus.text = getString(R.string.connection_failed, e.localizedMessage)
                     binding.tvStatus.setTextColor(getColor(android.R.color.holo_red_dark))
                     binding.btnSave.isEnabled = true
+                    binding.pbLoading.visibility = android.view.View.GONE
                 }
             }
         }
