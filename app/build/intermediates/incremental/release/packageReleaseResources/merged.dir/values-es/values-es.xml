@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">LanguageTool Droid</string>
+    <string name="btn_apply">Aplicar</string>
     <string name="btn_download">Descargar</string>
     <string name="btn_open_settings">Abrir Ajustes</string>
     <string name="btn_open_spell_settings">Abrir Ajustes Ortográficos</string>
@@ -13,6 +14,7 @@
     <string name="connection_testing">Probando conexión...</string>
     <string name="default_server">https://api.languagetool.org</string>
     <string name="hint_enable_service">Por favor, activa LanguageTool Droid en los ajustes del sistema.</string>
+    <string name="language_search_hint">Buscar idioma...</string>
     <string name="new_version_message">La versión %s está disponible.</string>
     <string name="new_version_title">Nueva Versión Disponible</string>
     <string name="settings_language">Idioma</string>

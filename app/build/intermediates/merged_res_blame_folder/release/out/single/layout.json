@@ -8,11 +8,27 @@
         "source": "/home/borja/.gradle/daemon/8.5/com.borja.langtooldroid.app-main-41:/layout/activity_rules.xml"
     },
     {
+        "merged": "com.borja.langtooldroid.app-mergeReleaseResources-39:/layout/item_language.xml",
+        "source": "com.borja.langtooldroid.app-main-41:/layout/item_language.xml"
+    },
+    {
+        "merged": "com.borja.langtooldroid.app-mergeReleaseResources-39:/layout/fragment_settings.xml",
+        "source": "com.borja.langtooldroid.app-main-41:/layout/fragment_settings.xml"
+    },
+    {
         "merged": "com.borja.langtooldroid.app-mergeReleaseResources-39:/layout/activity_main.xml",
         "source": "com.borja.langtooldroid.app-main-41:/layout/activity_main.xml"
     },
     {
         "merged": "/home/borja/.gradle/daemon/8.5/com.borja.langtooldroid.app-mergeReleaseResources-39:/layout/activity_main.xml",
         "source": "/home/borja/.gradle/daemon/8.5/com.borja.langtooldroid.app-main-41:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.borja.langtooldroid.app-mergeReleaseResources-39:/layout/fragment_about.xml",
+        "source": "com.borja.langtooldroid.app-main-41:/layout/fragment_about.xml"
+    },
+    {
+        "merged": "com.borja.langtooldroid.app-mergeReleaseResources-39:/layout/dialog_language_selector.xml",
+        "source": "com.borja.langtooldroid.app-main-41:/layout/dialog_language_selector.xml"
     }
 ]

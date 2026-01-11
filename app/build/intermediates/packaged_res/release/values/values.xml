@@ -19,6 +19,7 @@
     <color name="warning_text">#E65100</color>
     <color name="white">#FFFFFFFF</color>
     <string name="app_name">LanguageTool Droid</string>
+    <string name="btn_apply">Apply</string>
     <string name="btn_download">Download</string>
     <string name="btn_open_settings">Open Settings</string>
     <string name="btn_open_spell_settings">Open Spell Checker Settings</string>
@@ -31,6 +32,7 @@
     <string name="connection_testing">Testing connection...</string>
     <string name="default_server">https://api.languagetool.org</string>
     <string name="hint_enable_service">Please enable LanguageTool Droid in system settings.</string>
+    <string name="language_search_hint">Search language...</string>
     <string name="new_version_message">Version %s is available.</string>
     <string name="new_version_title">New Version Available</string>
     <string name="settings_language">Language</string>

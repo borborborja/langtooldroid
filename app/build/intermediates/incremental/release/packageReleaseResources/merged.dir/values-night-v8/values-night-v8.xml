@@ -13,4 +13,14 @@
     <color name="warning_stroke">#BF360C</color>
     <color name="warning_text">#FFAB91</color>
     <color name="white">#FF000000</color>
+    <style name="Theme.LanguageToolDroid" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        <item name="colorPrimary">@color/md_theme_light_primary</item>
+        <item name="colorOnPrimary">@color/md_theme_light_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/md_theme_light_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/md_theme_light_onPrimaryContainer</item>
+        
+        <item name="android:statusBarColor">?attr/colorPrimary</item>
+        
+    </style>
 </resources>

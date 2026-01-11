@@ -4,101 +4,43 @@ package com.borja.langtooldroid.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ProgressBar;
-import android.widget.ScrollView;
-import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
+import androidx.viewpager2.widget.ViewPager2;
 import com.borja.langtooldroid.R;
-import com.google.android.material.card.MaterialCardView;
-import com.google.android.material.materialswitch.MaterialSwitch;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
+import com.google.android.material.tabs.TabLayout;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
 
 public final class ActivityMainBinding implements ViewBinding {
   @NonNull
-  private final ScrollView rootView;
+  private final CoordinatorLayout rootView;
 
   @NonNull
-  public final Button btnAbout;
+  public final CoordinatorLayout coordinator;
 
   @NonNull
-  public final Button btnClipboard;
+  public final TabLayout tabLayout;
 
   @NonNull
-  public final Button btnOpenSettings;
+  public final ViewPager2 viewPager;
 
-  @NonNull
-  public final Button btnOpenSettingsWarning;
-
-  @NonNull
-  public final Button btnRules;
-
-  @NonNull
-  public final Button btnSave;
-
-  @NonNull
-  public final MaterialCardView cardSetupWarning;
-
-  @NonNull
-  public final TextInputEditText etLanguage;
-
-  @NonNull
-  public final TextInputEditText etMotherTongue;
-
-  @NonNull
-  public final TextInputEditText etServerUrl;
-
-  @NonNull
-  public final ProgressBar pbLoading;
-
-  @NonNull
-  public final MaterialSwitch swPicky;
-
-  @NonNull
-  public final MaterialSwitch swWifiOnly;
-
-  @NonNull
-  public final TextInputLayout tfServerUrl;
-
-  @NonNull
-  public final TextView tvStatus;
-
-  private ActivityMainBinding(@NonNull ScrollView rootView, @NonNull Button btnAbout,
-      @NonNull Button btnClipboard, @NonNull Button btnOpenSettings,
-      @NonNull Button btnOpenSettingsWarning, @NonNull Button btnRules, @NonNull Button btnSave,
-      @NonNull MaterialCardView cardSetupWarning, @NonNull TextInputEditText etLanguage,
-      @NonNull TextInputEditText etMotherTongue, @NonNull TextInputEditText etServerUrl,
-      @NonNull ProgressBar pbLoading, @NonNull MaterialSwitch swPicky,
-      @NonNull MaterialSwitch swWifiOnly, @NonNull TextInputLayout tfServerUrl,
-      @NonNull TextView tvStatus) {
+  private ActivityMainBinding(@NonNull CoordinatorLayout rootView,
+      @NonNull CoordinatorLayout coordinator, @NonNull TabLayout tabLayout,
+      @NonNull ViewPager2 viewPager) {
     this.rootView = rootView;
-    this.btnAbout = btnAbout;
-    this.btnClipboard = btnClipboard;
-    this.btnOpenSettings = btnOpenSettings;
-    this.btnOpenSettingsWarning = btnOpenSettingsWarning;
-    this.btnRules = btnRules;
-    this.btnSave = btnSave;
-    this.cardSetupWarning = cardSetupWarning;
-    this.etLanguage = etLanguage;
-    this.etMotherTongue = etMotherTongue;
-    this.etServerUrl = etServerUrl;
-    this.pbLoading = pbLoading;
-    this.swPicky = swPicky;
-    this.swWifiOnly = swWifiOnly;
-    this.tfServerUrl = tfServerUrl;
-    this.tvStatus = tvStatus;
+    this.coordinator = coordinator;
+    this.tabLayout = tabLayout;
+    this.viewPager = viewPager;
   }
 
   @Override
   @NonNull
-  public ScrollView getRoot() {
+  public CoordinatorLayout getRoot() {
     return rootView;
   }
 
@@ -123,99 +65,22 @@ public final class ActivityMainBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.btnAbout;
-      Button btnAbout = ViewBindings.findChildViewById(rootView, id);
-      if (btnAbout == null) {
+      CoordinatorLayout coordinator = (CoordinatorLayout) rootView;
+
+      id = R.id.tabLayout;
+      TabLayout tabLayout = ViewBindings.findChildViewById(rootView, id);
+      if (tabLayout == null) {
         break missingId;
       }
 
-      id = R.id.btnClipboard;
-      Button btnClipboard = ViewBindings.findChildViewById(rootView, id);
-      if (btnClipboard == null) {
+      id = R.id.viewPager;
+      ViewPager2 viewPager = ViewBindings.findChildViewById(rootView, id);
+      if (viewPager == null) {
         break missingId;
       }
 
-      id = R.id.btnOpenSettings;
-      Button btnOpenSettings = ViewBindings.findChildViewById(rootView, id);
-      if (btnOpenSettings == null) {
-        break missingId;
-      }
-
-      id = R.id.btnOpenSettingsWarning;
-      Button btnOpenSettingsWarning = ViewBindings.findChildViewById(rootView, id);
-      if (btnOpenSettingsWarning == null) {
-        break missingId;
-      }
-
-      id = R.id.btnRules;
-      Button btnRules = ViewBindings.findChildViewById(rootView, id);
-      if (btnRules == null) {
-        break missingId;
-      }
-
-      id = R.id.btnSave;
-      Button btnSave = ViewBindings.findChildViewById(rootView, id);
-      if (btnSave == null) {
-        break missingId;
-      }
-
-      id = R.id.cardSetupWarning;
-      MaterialCardView cardSetupWarning = ViewBindings.findChildViewById(rootView, id);
-      if (cardSetupWarning == null) {
-        break missingId;
-      }
-
-      id = R.id.etLanguage;
-      TextInputEditText etLanguage = ViewBindings.findChildViewById(rootView, id);
-      if (etLanguage == null) {
-        break missingId;
-      }
-
-      id = R.id.etMotherTongue;
-      TextInputEditText etMotherTongue = ViewBindings.findChildViewById(rootView, id);
-      if (etMotherTongue == null) {
-        break missingId;
-      }
-
-      id = R.id.etServerUrl;
-      TextInputEditText etServerUrl = ViewBindings.findChildViewById(rootView, id);
-      if (etServerUrl == null) {
-        break missingId;
-      }
-
-      id = R.id.pbLoading;
-      ProgressBar pbLoading = ViewBindings.findChildViewById(rootView, id);
-      if (pbLoading == null) {
-        break missingId;
-      }
-
-      id = R.id.swPicky;
-      MaterialSwitch swPicky = ViewBindings.findChildViewById(rootView, id);
-      if (swPicky == null) {
-        break missingId;
-      }
-
-      id = R.id.swWifiOnly;
-      MaterialSwitch swWifiOnly = ViewBindings.findChildViewById(rootView, id);
-      if (swWifiOnly == null) {
-        break missingId;
-      }
-
-      id = R.id.tfServerUrl;
-      TextInputLayout tfServerUrl = ViewBindings.findChildViewById(rootView, id);
-      if (tfServerUrl == null) {
-        break missingId;
-      }
-
-      id = R.id.tvStatus;
-      TextView tvStatus = ViewBindings.findChildViewById(rootView, id);
-      if (tvStatus == null) {
-        break missingId;
-      }
-
-      return new ActivityMainBinding((ScrollView) rootView, btnAbout, btnClipboard, btnOpenSettings,
-          btnOpenSettingsWarning, btnRules, btnSave, cardSetupWarning, etLanguage, etMotherTongue,
-          etServerUrl, pbLoading, swPicky, swWifiOnly, tfServerUrl, tvStatus);
+      return new ActivityMainBinding((CoordinatorLayout) rootView, coordinator, tabLayout,
+          viewPager);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -37,6 +37,7 @@
     <string name="bottomsheet_action_expand_halfway">Desplegar hasta la mitad</string>
     <string name="bottomsheet_drag_handle_clicked">Controlador de arrastre tocado dos veces</string>
     <string name="bottomsheet_drag_handle_content_description">Controlador de arrastre</string>
+    <string name="btn_apply">Aplicar</string>
     <string name="btn_download">Descargar</string>
     <string name="btn_open_settings">Abrir Ajustes</string>
     <string name="btn_open_spell_settings">Abrir Ajustes Ortográficos</string>
@@ -65,6 +66,7 @@
     <string name="hint_enable_service">Por favor, activa LanguageTool Droid en los ajustes del sistema.</string>
     <string name="icon_content_description">Icono del cuadro de diálogo</string>
     <string name="item_view_role_description">Pestaña</string>
+    <string name="language_search_hint">Buscar idioma...</string>
     <string name="material_clock_toggle_content_description">Selecciona AM o PM</string>
     <string name="material_hour_24h_suffix">%1$s horas</string>
     <string name="material_hour_selection">Seleccionar hora</string>
