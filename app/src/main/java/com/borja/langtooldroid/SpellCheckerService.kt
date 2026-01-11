@@ -108,7 +108,24 @@ class SpellCheckerService : SpellCheckerService() {
              val prefs = PreferenceManager.getDefaultSharedPreferences(applicationContext)
              val serverUrl = prefs.getString("server_url", getString(R.string.default_server)) ?: getString(R.string.default_server)
              val languageCodeRaw = prefs.getString("language_code", "auto") ?: "auto"
-             val language = if (languageCodeRaw.contains(",")) "auto" else languageCodeRaw
+             
+             // Determine language
+             var language = if (languageCodeRaw.contains(",")) "auto" else languageCodeRaw
+             
+             // If auto, try to resolve a better locale from the session or system
+             if (language == "auto") {
+                 // The session locale is the most accurate source for the input language
+                 val sessionLocale = this.locale 
+                 language = if (!sessionLocale.isNullOrIgnore()) {
+                     sessionLocale
+                 } else {
+                     // Fallback to system default if session provides nothing
+                     Locale.getDefault().toLanguageTag()
+                 }
+                 
+                 // Log for debugging
+                 Log.d("LTDroid", "Language resolved to: $language (Raw: $languageCodeRaw, Session: $sessionLocale)")
+             }
              
              // 1. Wifi Only Check
              val wifiOnly = prefs.getBoolean("wifi_only", false)
@@ -149,6 +166,10 @@ class SpellCheckerService : SpellCheckerService() {
                      emptyList()
                  }
              }
+        }
+        
+        private fun String?.isNullOrIgnore(): Boolean {
+            return this.isNullOrBlank() || this == "auto" || this == "" 
         }
         
         private fun createEmptySentenceSuggestionsInfo(): SentenceSuggestionsInfo {
