@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LanguageTool Droid</string>
+    <string name="btn_open_spell_settings">বানান সেটিংস খুলুন</string>
+    <string name="btn_test_connection">সংযোগ পরীক্ষা করুন</string>
+    <string name="connection_failed">সংযোগ ব্যর্থ: %s</string>
+    <string name="connection_success">সংযোগ সফল!</string>
+    <string name="default_server">https://api.languagetool.org</string>
+    <string name="hint_enable_service">দয়া করে সিস্টেম সেটিংসে LanguageTool Droid সক্ষম করুন।</string>
+    <string name="settings_language">ভাষা</string>
+    <string name="settings_server_url">সার্ভার URL</string>
+    <string name="settings_server_url_hint">https://api.languagetool.org</string>
+    <string name="title_activity_main">LanguageTool সেটিংস</string>
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LanguageTool Droid</string>
+    <string name="btn_open_spell_settings">Открыть настройки проверки</string>
+    <string name="btn_test_connection">Проверить соединение</string>
+    <string name="connection_failed">Ошибка соединения: %s</string>
+    <string name="connection_success">Успешное соединение!</string>
+    <string name="default_server">https://api.languagetool.org</string>
+    <string name="hint_enable_service">Включите LanguageTool Droid в настройках системы.</string>
+    <string name="settings_language">Язык</string>
+    <string name="settings_server_url">URL сервера</string>
+    <string name="settings_server_url_hint">https://api.languagetool.org</string>
+    <string name="title_activity_main">Настройки LanguageTool</string>
+</resources>

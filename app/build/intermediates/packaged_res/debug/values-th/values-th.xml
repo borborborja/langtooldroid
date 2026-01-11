@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LanguageTool Droid</string>
+    <string name="btn_open_spell_settings">เปิดการตั้งค่าการตรวจตัวสะกด</string>
+    <string name="btn_test_connection">ทดสอบการเชื่อมต่อ</string>
+    <string name="connection_failed">การเชื่อมต่อล้มเหลว: %s</string>
+    <string name="connection_success">เชื่อมต่อสำเร็จ!</string>
+    <string name="default_server">https://api.languagetool.org</string>
+    <string name="hint_enable_service">โปรดเปิดใช้งาน LanguageTool Droid ในการตั้งค่าระบบ</string>
+    <string name="settings_language">ภาษา</string>
+    <string name="settings_server_url">URL เซิร์ฟเวอร์</string>
+    <string name="settings_server_url_hint">https://api.languagetool.org</string>
+    <string name="title_activity_main">การตั้งค่า LanguageTool</string>
+</resources>

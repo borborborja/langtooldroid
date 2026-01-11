@@ -164,8 +164,16 @@ class SettingsFragment : Fragment() {
 
         CoroutineScope(Dispatchers.IO).launch {
             try {
+                // Defensive: Ensure we never send an empty language
+                val safeLang = if (language.isNullOrBlank() || language.length < 2) "auto" else language
+                
+                // For debugging locally if needed
+                withContext(Dispatchers.Main) {
+                   // binding.tvStatus.text = "Checking with: $safeLang..."
+                }
+
                 // simple check with a dummy text
-                LanguageToolClient.getApi(url).check("Hello world", language)
+                LanguageToolClient.getApi(url).check("Hello world", safeLang)
                 
                 withContext(Dispatchers.Main) {
                     binding.tvStatus.text = getString(R.string.connection_success)

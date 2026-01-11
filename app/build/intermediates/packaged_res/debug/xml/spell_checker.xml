@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<spell-checker xmlns:android="http://schemas.android.com/apk/res/android"
+    android:label="@string/app_name"
+    android:settingsActivity="com.borja.langtooldroid.MainActivity">
+    <subtype
+        android:label="@string/subtype_generic"
+        android:subtypeLocale="en" />
+    <subtype
+        android:label="@string/subtype_generic"
+        android:subtypeLocale="es" />
+</spell-checker>
