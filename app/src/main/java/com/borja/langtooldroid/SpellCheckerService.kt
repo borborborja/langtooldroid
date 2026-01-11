@@ -98,8 +98,17 @@ class SpellCheckerService : SpellCheckerService() {
 
                          val replacements = match.replacements.take(suggestionsLimit).map { it.value }.toTypedArray()
                          
-                         // Attributes: Look into RESULT_ATTR_HAS_RECOMMENDED_SUGGESTIONS etc.
-                         val attributes = SuggestionsInfo.RESULT_ATTR_LOOKS_LIKE_TYPO
+                         // Attributes
+                         var attributes = 0
+                         if (match.rule.issueType == "misspelling") {
+                             attributes = SuggestionsInfo.RESULT_ATTR_LOOKS_LIKE_TYPO
+                         } else {
+                             // Use RESULT_ATTR_LOOKS_LIKE_GRAMMAR_ERROR (Value 8, added in API 31)
+                             // We use the constant if available or raw value 8.
+                             // 0x0008 is RESULT_ATTR_LOOKS_LIKE_GRAMMAR_ERROR
+                             attributes = 0x0008 
+                         }
+                         
                          suggestionsInfos.add(SuggestionsInfo(attributes, replacements))
                          
                          offsets.add(match.offset)

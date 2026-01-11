@@ -26,7 +26,8 @@ data class Replacement(
 
 data class Rule(
     @SerializedName("id") val id: String,
-    @SerializedName("description") val description: String
+    @SerializedName("description") val description: String,
+    @SerializedName("issueType") val issueType: String
 )
 
 interface LanguageToolApi {
