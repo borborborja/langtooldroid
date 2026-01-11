@@ -165,6 +165,8 @@ class SpellCheckerService : SpellCheckerService() {
              // Blocking call
              return runBlocking {
                  try {
+                     log("Checking '$text' with lang '$language'") // Log Language
+                     
                      val params = HashMap<String, String>()
                      params["text"] = text
                      params["language"] = language
@@ -173,13 +175,18 @@ class SpellCheckerService : SpellCheckerService() {
                      if (disabledCats.isNotEmpty()) params["disabledCategories"] = disabledCats
                      
                      val response = LanguageToolClient.getApi(serverUrl).check(params)
+                     log("API Raw Matches: ${response.matches.size}") // Log Raw Count
                      
                      // Filter User Dictionary
-                     response.matches.filter { match ->
+                     val filtered = response.matches.filter { match ->
                          val errorText = text.substring(match.offset, match.offset + match.length)
                          !isWordInUserDictionary(errorText)
                      }
+                     log("Filtered Matches: ${filtered.size}") // Log Filtered Count
+                     return@runBlocking filtered
+                     
                  } catch (e: Exception) {
+                     log("API FAIL: ${e.message}") // Log Exceptions
                      Log.e("LTDroid", "API Call failed: ${e.message}")
                      emptyList()
                  }
