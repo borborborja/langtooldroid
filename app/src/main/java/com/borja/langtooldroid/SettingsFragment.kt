@@ -40,61 +40,23 @@ class SettingsFragment : Fragment() {
         binding.etMotherTongue.setText(prefs.getString("mother_tongue", "Select..."))
 
         // Language Selector Logic
-        val languages = arrayOf("auto", "en-US", "es-ES", "fr-FR", "de-DE", "it-IT", "pt-PT", "ru-RU", "zh-CN", "ja-JP", "ca-ES", "gl-ES", "eu-ES", "nl-NL", "pl-PL", "ro-RO", "uk-UA")
-        val selectedLanguages = BooleanArray(languages.size)
-        val savedLangs = prefs.getString("language_code", "auto")?.split(",") ?: listOf("auto")
-        for (i in languages.indices) {
-             if (savedLangs.contains(languages[i])) {
-                 selectedLanguages[i] = true
-             }
-        }
-
         binding.etLanguage.setOnClickListener {
-            val builder = androidx.appcompat.app.AlertDialog.Builder(requireContext())
-            builder.setTitle(getString(R.string.settings_language))
-            builder.setMultiChoiceItems(languages, selectedLanguages) { dialog, which, isChecked ->
-                selectedLanguages[which] = isChecked
-                if (languages[which] == "auto" && isChecked) {
-                     for (i in languages.indices) {
-                         if (i != which) {
-                             selectedLanguages[i] = false
-                             (dialog as? androidx.appcompat.app.AlertDialog)?.listView?.setItemChecked(i, false)
-                         }
-                     }
-                } else if (isChecked) {
-                      val autoIndex = languages.indexOf("auto")
-                      if (autoIndex != -1 && selectedLanguages[autoIndex]) {
-                          selectedLanguages[autoIndex] = false
-                           (dialog as? androidx.appcompat.app.AlertDialog)?.listView?.setItemChecked(autoIndex, false)
-                      }
-                }
+            val dialog = LanguageSelectionDialog()
+            dialog.initiallySelectedCodes = binding.etLanguage.text.toString().split(",")
+            dialog.onLanguagesSelected = { codes ->
+                binding.etLanguage.setText(codes.joinToString(","))
             }
-            builder.setPositiveButton("OK") { _, _ ->
-                val selectedList = mutableListOf<String>()
-                for (i in languages.indices) {
-                    if (selectedLanguages[i]) {
-                        selectedList.add(languages[i])
-                    }
-                }
-                if (selectedList.isEmpty()) {
-                    selectedList.add("auto")
-                    selectedLanguages[languages.indexOf("auto")] = true
-                }
-                binding.etLanguage.setText(selectedList.joinToString(","))
-            }
-            builder.setNegativeButton("Cancel", null)
-            builder.show()
+            dialog.show(parentFragmentManager, "LanguageSelector")
         }
 
         // Mother Tongue Selector
         binding.etMotherTongue.setOnClickListener {
-             val builder = androidx.appcompat.app.AlertDialog.Builder(requireContext())
-             builder.setTitle("Select Native Language")
-             val codes = languages.drop(1).toTypedArray() // Remove 'auto'
-             builder.setItems(codes) { _, which ->
-                 binding.etMotherTongue.setText(codes[which])
-             }
-             builder.show()
+            val dialog = LanguageSelectionDialog()
+            dialog.isSingleSelection = true
+            dialog.onSingleLanguageSelected = { code ->
+                binding.etMotherTongue.setText(code)
+            }
+            dialog.show(parentFragmentManager, "MotherTongueSelector")
         }
 
         // Toggles

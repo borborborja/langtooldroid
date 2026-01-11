@@ -21,6 +21,7 @@ color white
 drawable gradient_background
 drawable ic_arrow_drop_down_24
 id btnAbout
+id btnApply
 id btnClipboard
 id btnOpenSettings
 id btnOpenSettingsWarning
@@ -29,11 +30,14 @@ id btnSave
 id btn_check_update
 id btn_download_update
 id cardSetupWarning
+id cbSelected
 id coordinator
 id etLanguage
 id etMotherTongue
+id etSearch
 id etServerUrl
 id pbLoading
+id rvLanguages
 id swPicky
 id swWifiOnly
 id sw_casing
@@ -43,7 +47,11 @@ id sw_semantics
 id sw_style
 id sw_typo
 id tabLayout
+id tfSearch
 id tfServerUrl
+id tvCode
+id tvName
+id tvNativeName
 id tvStatus
 id tv_current_version
 id tv_update_status
@@ -51,11 +59,14 @@ id viewPager
 layout activity_about
 layout activity_main
 layout activity_rules
+layout dialog_language_selector
 layout fragment_about
 layout fragment_settings
+layout item_language
 mipmap ic_launcher
 mipmap ic_launcher_round
 string app_name
+string btn_apply
 string btn_download
 string btn_open_settings
 string btn_open_spell_settings
@@ -68,6 +79,7 @@ string connection_success
 string connection_testing
 string default_server
 string hint_enable_service
+string language_search_hint
 string new_version_message
 string new_version_title
 string settings_language

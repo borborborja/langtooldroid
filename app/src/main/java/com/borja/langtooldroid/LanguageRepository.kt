@@ -1,0 +1,53 @@
+package com.borja.langtooldroid
+
+data class Language(val code: String, val name: String, val nativeName: String = "")
+
+object LanguageRepository {
+    val languages = listOf(
+        Language("auto", "Auto-Detect", "Automático"),
+        Language("ar", "Arabic", "العربية"),
+        Language("ast-ES", "Asturian", "Asturianu"),
+        Language("be-BY", "Belarusian", "Беларуская"),
+        Language("br-FR", "Breton", "Brezhoneg"),
+        Language("ca-ES", "Catalan", "Català"),
+        Language("ca-ES-valencia", "Catalan (Valencian)", "Català (Valencià)"),
+        Language("zh-CN", "Chinese (Simplified)", "中文"),
+        Language("da-DK", "Danish", "Dansk"),
+        Language("nl-NL", "Dutch", "Nederlands"),
+        Language("nl-BE", "Dutch (Belgium)", "Nederlands (België)"),
+        Language("en-US", "English (US)", "English (US)"),
+        Language("en-GB", "English (UK)", "English (UK)"),
+        Language("en-AU", "English (Australia)", "English (Australia)"),
+        Language("en-CA", "English (Canada)", "English (Canada)"),
+        Language("en-NZ", "English (New Zealand)", "English (New Zealand)"),
+        Language("en-ZA", "English (South Africa)", "English (South Africa)"),
+        Language("eo", "Esperanto", "Esperanto"),
+        Language("fr-FR", "French", "Français"),
+        Language("gl-ES", "Galician", "Galego"),
+        Language("de-DE", "German (Germany)", "Deutsch (Deutschland)"),
+        Language("de-AT", "German (Austria)", "Deutsch (Österreich)"),
+        Language("de-CH", "German (Switzerland)", "Deutsch (Schweiz)"),
+        Language("el-GR", "Greek", "Ελληνικά"),
+        Language("ga-IE", "Irish", "Gaeilge"),
+        Language("it-IT", "Italian", "Italiano"),
+        Language("ja-JP", "Japanese", "日本語"),
+        Language("km-KH", "Khmer", "ភាសាខ្មែរ"),
+        Language("fa-IR", "Persian", "فارسی"),
+        Language("pl-PL", "Polish", "Polski"),
+        Language("pt-PT", "Portuguese (Portugal)", "Português (Portugal)"),
+        Language("pt-BR", "Portuguese (Brazil)", "Português (Brasil)"),
+        Language("pt-AO", "Portuguese (Angola)", "Português (Angola)"),
+        Language("pt-MZ", "Portuguese (Mozambique)", "Português (Moçambique)"),
+        Language("ro-RO", "Romanian", "Română"),
+        Language("ru-RU", "Russian", "Русский"),
+        Language("sk-SK", "Slovak", "Slovenčina"),
+        Language("sl-SI", "Slovenian", "Slovenščina"),
+        Language("es-ES", "Spanish", "Español"),
+        Language("es-MX", "Spanish (Mexico)", "Español (México)"),
+        Language("es-AR", "Spanish (Argentina)", "Español (Argentina)"),
+        Language("sv-SE", "Swedish", "Svenska"),
+        Language("tl-PH", "Tagalog", "Tagalog"),
+        Language("ta-IN", "Tamil", "தமிழ்"),
+        Language("uk-UA", "Ukrainian", "Українська")
+    ).sortedBy { it.name }
+}
