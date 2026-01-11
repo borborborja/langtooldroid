@@ -75,13 +75,15 @@ class SpellCheckerService : SpellCheckerService() {
                     // Synchronous blocking call is required here as the API is synchronous
                     // Ideally we should keep this fast.
                     val checkResponse = runBlocking {
-                         LanguageToolClient.getApi(serverUrl).check(
-                             text = sentence, 
-                             language = language,
-                             level = level,
-                             motherTongue = motherTongue,
-                             disabledCategories = disabledCats
-                         )
+                            val params = HashMap<String, String>()
+                            params["text"] = sentence
+                            params["language"] = language
+                            params["level"] = level
+                            params["motherTongue"] = motherTongue
+                            params["disabledCategories"] = disabledCats
+                            // Add other options if implemented in preferences later
+                            
+                            LanguageToolClient.getApi(serverUrl).check(params)
                     }
 
                     val suggestionsInfos = ArrayList<SuggestionsInfo>()

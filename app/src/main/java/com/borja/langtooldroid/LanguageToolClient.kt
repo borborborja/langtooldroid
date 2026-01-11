@@ -34,12 +34,7 @@ interface LanguageToolApi {
     @FormUrlEncoded
     @POST("v2/check")
     suspend fun check(
-        @Field("text") text: String,
-        @Field("language") language: String,
-        @Field("level") level: String = "default",
-        @Field("motherTongue") motherTongue: String = "",
-        @Field("disabledCategories") disabledCategories: String = "",
-        @Field("enabledOnly") enabledOnly: Boolean = false
+        @retrofit2.http.FieldMap options: Map<String, String>
     ): CheckResponse
 }
 

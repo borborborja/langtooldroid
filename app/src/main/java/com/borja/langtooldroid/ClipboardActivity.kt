@@ -49,13 +49,14 @@ class ClipboardActivity : AppCompatActivity() {
 
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                val response = LanguageToolClient.getApi(serverUrl).check(
-                     text = text, 
-                     language = language,
-                     level = level,
-                     motherTongue = motherTongue,
-                     disabledCategories = disabledCats
-                )
+                val params = HashMap<String, String>()
+                params["text"] = text
+                params["language"] = language
+                params["level"] = level
+                params["motherTongue"] = motherTongue
+                params["disabledCategories"] = disabledCats
+                
+                val response = LanguageToolClient.getApi(serverUrl).check(params)
 
                 withContext(Dispatchers.Main) {
                     showResults(text, response.matches)

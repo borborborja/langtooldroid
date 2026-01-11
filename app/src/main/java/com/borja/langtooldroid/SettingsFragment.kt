@@ -173,7 +173,11 @@ class SettingsFragment : Fragment() {
                 }
 
                 // simple check with a dummy text
-                LanguageToolClient.getApi(url).check("Hello world", safeLang)
+                val params = HashMap<String, String>()
+                params["text"] = "Hello world"
+                params["language"] = safeLang
+                
+                LanguageToolClient.getApi(url).check(params)
                 
                 withContext(Dispatchers.Main) {
                     binding.tvStatus.text = getString(R.string.connection_success)
