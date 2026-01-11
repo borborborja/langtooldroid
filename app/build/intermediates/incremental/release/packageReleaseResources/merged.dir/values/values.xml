@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="bg_gradient_end">#D9E2EC</color>
+    <color name="bg_gradient_start">#F0F4F8</color>
     <color name="black">#FF000000</color>
+    <color name="card_bg">#FFFFFF</color>
     <color name="md_theme_light_onPrimary">#FFFFFF</color>
     <color name="md_theme_light_onPrimaryContainer">#002114</color>
     <color name="md_theme_light_primary">#006C4C</color>
@@ -10,6 +13,10 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
+    <color name="text_headers">#546E7A</color>
+    <color name="warning_bg">#FFF3E0</color>
+    <color name="warning_stroke">#FFB74D</color>
+    <color name="warning_text">#E65100</color>
     <color name="white">#FFFFFFFF</color>
     <string name="app_name">LanguageTool Droid</string>
     <string name="btn_download">Download</string>
@@ -31,6 +38,7 @@
     <string name="settings_server_url_hint">https://api.languagetool.org</string>
     <string name="setup_warning_description">You must enable LanguageTool Droid in your system\'s Spell Checker settings to use this app.</string>
     <string name="setup_warning_title">Setup Required</string>
+    <string name="subtype_generic">LanguageTool</string>
     <string name="title_activity_main">LanguageTool Settings</string>
     <style name="Theme.LanguageToolDroid" parent="Theme.Material3.DayNight.NoActionBar">
         

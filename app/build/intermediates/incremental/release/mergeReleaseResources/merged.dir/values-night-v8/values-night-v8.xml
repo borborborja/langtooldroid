@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="bg_gradient_end">#1E1E1E</color>
+    <color name="bg_gradient_start">#121212</color>
+    <color name="black">#FFFFFFFF</color>
+    <color name="card_bg">#2D2D2D</color>
+    <color name="md_theme_light_onPrimary">#00334D</color>
+    <color name="md_theme_light_onPrimaryContainer">#CBE6FF</color>
+    <color name="md_theme_light_primary">#80D8FF</color>
+    <color name="md_theme_light_primaryContainer">#004B6F</color>
+    <color name="text_headers">#B0BEC5</color>
+    <color name="warning_bg">#3E2723</color>
+    <color name="warning_stroke">#BF360C</color>
+    <color name="warning_text">#FFAB91</color>
+    <color name="white">#FF000000</color>
     <style name="Theme.AppCompat.DayNight" parent="Theme.AppCompat"/>
     <style name="Theme.AppCompat.DayNight.DarkActionBar" parent="Theme.AppCompat"/>
     <style name="Theme.AppCompat.DayNight.Dialog" parent="Theme.AppCompat.Dialog"/>

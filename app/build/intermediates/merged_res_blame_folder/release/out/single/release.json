@@ -1,42 +1,54 @@
 [
     {
-        "merged": "com.borja.langtooldroid.app-merged_res-40:/drawable_ic_arrow_drop_down_24.xml.flat",
-        "source": "com.borja.langtooldroid.app-main-41:/drawable/ic_arrow_drop_down_24.xml"
+        "merged": "com.borja.langtooldroid.app-merged_res-40:/xml_spell_checker.xml.flat",
+        "source": "com.borja.langtooldroid.app-main-41:/xml/spell_checker.xml"
+    },
+    {
+        "merged": "/home/borja/.gradle/daemon/8.5/com.borja.langtooldroid.app-merged_res-40:/drawable_gradient_background.xml.flat",
+        "source": "/home/borja/.gradle/daemon/8.5/com.borja.langtooldroid.app-main-41:/drawable/gradient_background.xml"
+    },
+    {
+        "merged": "/home/borja/.gradle/daemon/8.5/com.borja.langtooldroid.app-merged_res-40:/xml_spell_checker.xml.flat",
+        "source": "/home/borja/.gradle/daemon/8.5/com.borja.langtooldroid.app-main-41:/xml/spell_checker.xml"
+    },
+    {
+        "merged": "/home/borja/.gradle/daemon/8.5/com.borja.langtooldroid.app-merged_res-40:/xml_data_extraction_rules.xml.flat",
+        "source": "/home/borja/.gradle/daemon/8.5/com.borja.langtooldroid.app-main-41:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "/home/borja/.gradle/daemon/8.5/com.borja.langtooldroid.app-merged_res-40:/mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "/home/borja/.gradle/daemon/8.5/com.borja.langtooldroid.app-main-41:/mipmap-xxxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/home/borja/.gradle/daemon/8.5/com.borja.langtooldroid.app-merged_res-40:/layout_activity_main.xml.flat",
+        "source": "/home/borja/.gradle/daemon/8.5/com.borja.langtooldroid.app-main-41:/layout/activity_main.xml"
+    },
+    {
+        "merged": "/home/borja/.gradle/daemon/8.5/com.borja.langtooldroid.app-merged_res-40:/layout_activity_about.xml.flat",
+        "source": "/home/borja/.gradle/daemon/8.5/com.borja.langtooldroid.app-main-41:/layout/activity_about.xml"
     },
     {
         "merged": "com.borja.langtooldroid.app-merged_res-40:/layout_activity_main.xml.flat",
         "source": "com.borja.langtooldroid.app-main-41:/layout/activity_main.xml"
     },
     {
-        "merged": "com.borja.langtooldroid.app-merged_res-40:/layout_activity_about.xml.flat",
-        "source": "com.borja.langtooldroid.app-main-41:/layout/activity_about.xml"
+        "merged": "/home/borja/.gradle/daemon/8.5/com.borja.langtooldroid.app-merged_res-40:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "/home/borja/.gradle/daemon/8.5/com.borja.langtooldroid.app-main-41:/mipmap-xxxhdpi/ic_launcher.png"
     },
     {
-        "merged": "com.borja.langtooldroid.app-merged_res-40:/layout_activity_rules.xml.flat",
-        "source": "com.borja.langtooldroid.app-main-41:/layout/activity_rules.xml"
+        "merged": "/home/borja/.gradle/daemon/8.5/com.borja.langtooldroid.app-merged_res-40:/drawable_ic_arrow_drop_down_24.xml.flat",
+        "source": "/home/borja/.gradle/daemon/8.5/com.borja.langtooldroid.app-main-41:/drawable/ic_arrow_drop_down_24.xml"
     },
     {
-        "merged": "com.borja.langtooldroid.app-merged_res-40:/xml_spell_checker.xml.flat",
-        "source": "com.borja.langtooldroid.app-main-41:/xml/spell_checker.xml"
-    },
-    {
-        "merged": "com.borja.langtooldroid.app-merged_res-40:/mipmap-xxxhdpi_ic_launcher.png.flat",
-        "source": "com.borja.langtooldroid.app-main-41:/mipmap-xxxhdpi/ic_launcher.png"
-    },
-    {
-        "merged": "com.borja.langtooldroid.app-merged_res-40:/xml_data_extraction_rules.xml.flat",
-        "source": "com.borja.langtooldroid.app-main-41:/xml/data_extraction_rules.xml"
-    },
-    {
-        "merged": "com.borja.langtooldroid.app-merged_res-40:/xml_backup_rules.xml.flat",
-        "source": "com.borja.langtooldroid.app-main-41:/xml/backup_rules.xml"
+        "merged": "/home/borja/.gradle/daemon/8.5/com.borja.langtooldroid.app-merged_res-40:/layout_activity_rules.xml.flat",
+        "source": "/home/borja/.gradle/daemon/8.5/com.borja.langtooldroid.app-main-41:/layout/activity_rules.xml"
     },
     {
         "merged": "com.borja.langtooldroid.app-merged_res-40:/drawable_gradient_background.xml.flat",
         "source": "com.borja.langtooldroid.app-main-41:/drawable/gradient_background.xml"
     },
     {
-        "merged": "com.borja.langtooldroid.app-merged_res-40:/mipmap-xxxhdpi_ic_launcher_round.png.flat",
-        "source": "com.borja.langtooldroid.app-main-41:/mipmap-xxxhdpi/ic_launcher_round.png"
+        "merged": "/home/borja/.gradle/daemon/8.5/com.borja.langtooldroid.app-merged_res-40:/xml_backup_rules.xml.flat",
+        "source": "/home/borja/.gradle/daemon/8.5/com.borja.langtooldroid.app-main-41:/xml/backup_rules.xml"
     }
 ]

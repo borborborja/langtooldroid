@@ -1,14 +1,18 @@
 [
     {
-        "merged": "com.borja.langtooldroid.app-mergeReleaseResources-39:/layout/activity_about.xml",
-        "source": "com.borja.langtooldroid.app-main-41:/layout/activity_about.xml"
+        "merged": "/home/borja/.gradle/daemon/8.5/com.borja.langtooldroid.app-mergeReleaseResources-39:/layout/activity_about.xml",
+        "source": "/home/borja/.gradle/daemon/8.5/com.borja.langtooldroid.app-main-41:/layout/activity_about.xml"
     },
     {
-        "merged": "com.borja.langtooldroid.app-mergeReleaseResources-39:/layout/activity_rules.xml",
-        "source": "com.borja.langtooldroid.app-main-41:/layout/activity_rules.xml"
+        "merged": "/home/borja/.gradle/daemon/8.5/com.borja.langtooldroid.app-mergeReleaseResources-39:/layout/activity_rules.xml",
+        "source": "/home/borja/.gradle/daemon/8.5/com.borja.langtooldroid.app-main-41:/layout/activity_rules.xml"
     },
     {
         "merged": "com.borja.langtooldroid.app-mergeReleaseResources-39:/layout/activity_main.xml",
         "source": "com.borja.langtooldroid.app-main-41:/layout/activity_main.xml"
+    },
+    {
+        "merged": "/home/borja/.gradle/daemon/8.5/com.borja.langtooldroid.app-mergeReleaseResources-39:/layout/activity_main.xml",
+        "source": "/home/borja/.gradle/daemon/8.5/com.borja.langtooldroid.app-main-41:/layout/activity_main.xml"
     }
 ]

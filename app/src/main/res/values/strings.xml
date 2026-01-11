@@ -19,7 +19,6 @@
     <string name="card_actions">Actions</string>
     <string name="new_version_title">New Version Available</string>
     <string name="new_version_message">Version %s is available.</string>
-    <string name="new_version_message">Version %s is available.</string>
     <string name="btn_download">Download</string>
     <string name="subtype_generic">LanguageTool</string>
 </resources>

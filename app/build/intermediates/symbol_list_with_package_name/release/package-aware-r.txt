@@ -1425,6 +1425,8 @@ color background_floating_material_dark
 color background_floating_material_light
 color background_material_dark
 color background_material_light
+color bg_gradient_end
+color bg_gradient_start
 color black
 color bright_foreground_disabled_material_dark
 color bright_foreground_disabled_material_light
@@ -1436,6 +1438,7 @@ color button_material_dark
 color button_material_light
 color call_notification_answer_color
 color call_notification_decline_color
+color card_bg
 color cardview_dark_background
 color cardview_light_background
 color cardview_shadow_end_color
@@ -2171,8 +2174,12 @@ color switch_thumb_normal_material_dark
 color switch_thumb_normal_material_light
 color teal_200
 color teal_700
+color text_headers
 color tooltip_background_dark
 color tooltip_background_light
+color warning_bg
+color warning_stroke
+color warning_text
 color white
 dimen abc_action_bar_content_inset_material
 dimen abc_action_bar_content_inset_with_nav
@@ -4111,6 +4118,7 @@ string setup_warning_title
 string side_sheet_accessibility_pane_title
 string side_sheet_behavior
 string status_bar_notification_info_overflow
+string subtype_generic
 string summary_collapsed_preference_list
 string title_activity_main
 string v7_preference_off

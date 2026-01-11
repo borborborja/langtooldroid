@@ -1,6 +1,9 @@
 R_DEF: Internal format may change without notice
 local
+color bg_gradient_end
+color bg_gradient_start
 color black
+color card_bg
 color md_theme_light_onPrimary
 color md_theme_light_onPrimaryContainer
 color md_theme_light_primary
@@ -10,6 +13,10 @@ color purple_500
 color purple_700
 color teal_200
 color teal_700
+color text_headers
+color warning_bg
+color warning_stroke
+color warning_text
 color white
 drawable gradient_background
 drawable ic_arrow_drop_down_24
@@ -63,6 +70,7 @@ string settings_server_url
 string settings_server_url_hint
 string setup_warning_description
 string setup_warning_title
+string subtype_generic
 string title_activity_main
 style Theme.LanguageToolDroid
 xml backup_rules
