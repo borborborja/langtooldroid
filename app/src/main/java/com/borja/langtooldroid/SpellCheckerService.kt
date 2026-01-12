@@ -84,20 +84,22 @@ class SpellCheckerService : SpellCheckerService() {
                     val offsets = ArrayList<Int>()
                     val lengths = ArrayList<Int>()
 
-                    for (match in matches) {
+                     for (match in matches) {
                          val replacements = match.replacements.take(suggestionsLimit).map { it.value }.toTypedArray()
+                          
+                         // Attributes
+                         var attributes = 0
+                         if (match.rule.issueType == "misspelling") {
+                             attributes = SuggestionsInfo.RESULT_ATTR_LOOKS_LIKE_TYPO
+                         } else {
+                             // Flag all as TYPO for now to ensure visibility on Android.
+                             // 0x0008 (Grammar) is not always supported.
+                             attributes = SuggestionsInfo.RESULT_ATTR_LOOKS_LIKE_TYPO 
+                         }
                          
-                          // Attributes
-                          var attributes = 0
-                          if (match.rule.issueType == "misspelling") {
-                              attributes = SuggestionsInfo.RESULT_ATTR_LOOKS_LIKE_TYPO
-                          } else {
-                              // Flag all as TYPO for now to ensure visibility on Android.
-                              // 0x0008 (Grammar) is not always supported.
-                              attributes = SuggestionsInfo.RESULT_ATTR_LOOKS_LIKE_TYPO 
-                          }
-                         
-                         suggestionsInfos.add(SuggestionsInfo(attributes, replacements))
+                         val si = SuggestionsInfo(attributes, replacements)
+                         si.setCookieAndSequence(textInfo.cookie, textInfo.sequence)
+                         suggestionsInfos.add(si)
                          
                          offsets.add(match.offset)
                          lengths.add(match.length)
